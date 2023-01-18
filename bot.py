@@ -12,7 +12,7 @@ client = MongoClient("mongodb+srv://really651:K4vSnRMEsZhqsTqS@cluster0.pxc2foz.
 db = client["Newdb"]
 collection = db["Mycollection"]
 
-bot = telebot.TeleBot("5769907387:AAEJSjo2cu7dsw5h1xbyPi568TijI4rp4-Q")
+bot = telebot.TeleBot("5801051594:AAHsFpufFnlndKl-HsRht_2FD3AVx7A954g")
 
 def lang1(message):
 	langs = [key for key in lang]
@@ -184,6 +184,7 @@ def callback(callback):
 		bot.edit_message_reply_markup(callback.message.chat.id, callback.message.message_id, reply_markup = lang2(callback))
 	elif callback.data =="close":
 		bot.delete_message(callback.message.chat.id, callback.message.message_id)
+		bot.send_message(callback.message.chat.id, f"✋{callback.message.from_user.first_name} Baga Nagaan Dhuftan. Ani Bootii Afaan barbaaddan gara Afaan feetaniitti isiniif jijjiiruudha. <b>Afaan Oromoo</b> jechuudha.\nSirreefama Afaanii jijjiiruuf /set kan jedhu cuqaasaa! Amma barreeffama barbaaddan anatti ergaa🔍")
 	elif callback.data =="om":
 		bot.delete_message(callback.message.chat.id, callback.message.message_id)
 		collection.update_one({'user_id': id}, {'$set': {'lang': "om"}})

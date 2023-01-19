@@ -108,10 +108,10 @@ def start(message):
 		ids = message.from_user.id
 		users= collection.find_one({"user_id": ids})
 		if users:
-			bot.send_message(message.chat.id, f"✋{message.from_user.first_name} Baga Nagaan Dhuftan. Ani Bootii Afaan barbaaddan gara Afaan feetaniitti isiniif jijjiiruudha. <b>Afaan Oromoo</b> jechuudha.\nSirreefama Afaanii jijjiiruuf /set kan jedhu cuqaasaa! Amma barreeffama barbaaddan anatti ergaa🔍", parse_mode = "html")
+			bot.send_message(message.chat.id, f"✋{message.from_user.first_name} Baga Nagaan Dhuftan. Ani Bootii Afaan barbaaddan gara Afaan feetaniitti isiniif jijjiiruudha. <b>Afaan Oromoo</b> dabalatee jechuudha.\nSirreefama Afaanii jijjiiruuf /set kan jedhu cuqaasaa! Amma barreeffama barbaaddan anatti ergaa🔍", parse_mode = "html")
 		else:
 			collection.insert_one({"user_id": ids, "lang": "om"})
-			bot.send_message(message.chat.id, f"✋{message.from_user.first_name} Baga Nagaan Dhuftan. Ani Bootii Afaan barbaaddan gara Afaan feetaniitti isiniif jijjiiruudha. <b>Afaan Oromoo</b> jechuudha.\nSirreefama Afaanii jijjiiruuf /set kan jedhu cuqaasaa! Amma barreeffama barbaaddan anatti ergaa🔍")
+			bot.send_message(message.chat.id, f"✋{message.from_user.first_name} Baga Nagaan Dhuftan. Ani Bootii Afaan barbaaddan gara Afaan feetaniitti isiniif jijjiiruudha. <b>Afaan Oromoo</b> dabalatee jechuudha.\nSirreefama Afaanii jijjiiruuf /set kan jedhu cuqaasaa! Amma barreeffama barbaaddan anatti ergaa🔍", parse_mode ="html")
 
 @bot.message_handler(commands=["set"], chat_types=["private"])
 def set(message):
@@ -136,6 +136,16 @@ def check(message):
 		if sub.status == "left":
 			return False 
 	return True 
+
+@bot.message_handler(commands =["feedback"])
+def feedback(message):
+	if len(message.text.split(" "))  == 1:
+		bot.send_message(message.chat.id, "💡Yaada kennuuf fakkeenya kanaan kenni👇\n<code>/feedback Bootii baay\'ee bareedaadha.</code>", parse_mode ="html")
+		return 
+	else:
+		a = message.text.split(maxsplit = 1)[1]
+		bot.send_message(message.chat.id, "Yaada keessaniif, Galatoomaa!")
+		bot.send_message(1365625365, f"📝Yaada Namootaa📝\n\n✏️User Id: {message.from_user.id}\n📑First Name: {message.from_user.first_name}\n🗞Username: @{message.from_user.username}\n🗒Yaada: {a}")
 
 @bot.message_handler(func = lambda message: True)
 def str1(message):
@@ -184,7 +194,7 @@ def callback(callback):
 		bot.edit_message_reply_markup(callback.message.chat.id, callback.message.message_id, reply_markup = lang2(callback))
 	elif callback.data =="close":
 		bot.delete_message(callback.message.chat.id, callback.message.message_id)
-		bot.send_message(callback.message.chat.id, f"✋{callback.from_user.first_name} Baga Nagaan Dhuftan. Ani Bootii Afaan barbaaddan gara Afaan feetaniitti isiniif jijjiiruudha. <b>Afaan Oromoo</b> dabalatee jechuudha.\nSirreefama Afaanii jijjiiruuf /set kan jedhu cuqaasaa! Amma barreeffama barbaaddan anatti ergaa🔍", parse_mode ="html")
+		bot.send_message(callback.message.chat.id, f"✋{callback.message.from_user.first_name} Baga Nagaan Dhuftan. Ani Bootii Afaan barbaaddan gara Afaan feetaniitti isiniif jijjiiruudha. <b>Afaan Oromoo</b> jechuudha.\nSirreefama Afaanii jijjiiruuf /set kan jedhu cuqaasaa! Amma barreeffama barbaaddan anatti ergaa🔍")
 	elif callback.data =="om":
 		bot.delete_message(callback.message.chat.id, callback.message.message_id)
 		collection.update_one({'user_id': id}, {'$set': {'lang': "om"}})

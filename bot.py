@@ -12,7 +12,7 @@ client = MongoClient("mongodb+srv://really651:K4vSnRMEsZhqsTqS@cluster0.pxc2foz.
 db = client["Newdb"]
 collection = db["Mycollection"]
 
-bot = telebot.TeleBot("5801051594:AAHsFpufFnlndKl-HsRht_2FD3AVx7A954g")
+bot = telebot.TeleBot("5801051594:AAHsFpufFnlndKl-HsRht_2FD3AVx7A954g", parse_mode ="html")
 
 def lang1(message):
 	langs = [key for key in lang]

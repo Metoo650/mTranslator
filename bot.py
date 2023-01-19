@@ -194,7 +194,7 @@ def callback(callback):
 		bot.edit_message_reply_markup(callback.message.chat.id, callback.message.message_id, reply_markup = lang2(callback))
 	elif callback.data =="close":
 		bot.delete_message(callback.message.chat.id, callback.message.message_id)
-		bot.send_message(callback.message.chat.id, f"✋{callback.message.from_user.first_name} Baga Nagaan Dhuftan. Ani Bootii Afaan barbaaddan gara Afaan feetaniitti isiniif jijjiiruudha. <b>Afaan Oromoo</b> dabalatee jechuudha.\nSirreefama Afaanii jijjiiruuf /set kan jedhu cuqaasaa! Amma barreeffama barbaaddan anatti ergaa🔍")
+		bot.send_message(callback.message.chat.id, f"✋{callback.from_user.first_name} Baga Nagaan Dhuftan. Ani Bootii Afaan barbaaddan gara Afaan feetaniitti isiniif jijjiiruudha. <b>Afaan Oromoo</b> dabalatee jechuudha.\nSirreefama Afaanii jijjiiruuf /set kan jedhu cuqaasaa! Amma barreeffama barbaaddan anatti ergaa🔍", parse_mode ="html")
 	elif callback.data =="om":
 		bot.delete_message(callback.message.chat.id, callback.message.message_id)
 		collection.update_one({'user_id': id}, {'$set': {'lang': "om"}})

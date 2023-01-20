@@ -126,7 +126,7 @@ def sats(message):
 
 @bot.message_handler(commands = ["about"])
 def maker(message):
-	bot.send_message(message.chat.id, "🛡Bootiin akka fayyadamtootaaf fayyadamuun salphatutti haala bareedaa ta\'en kan hojjatamedha. 👌Keessattuu bootiin kun Barattootaaf baay\'ee tokko barbaachisaadha. Kanaafuu isinis link Bootii kana Namoota biroof akka ergitaniif isin gaafanna😍\n📎Liinkii @OromoTranslatorBot 📎\n🤖Bot Kana Kan hojjate: @Lencho24 ✍️\n✅Galatoomaa! Yeroo Gaarii🤩")
+	bot.send_message(message.chat.id, "🛡Bootiin akka fayyadamtootaaf fayyadamuun salphatutti haala bareedaa ta\'en kan hojjatamedha. 👌Keessattuu bootiin kun Barattootaaf baay\'ee tokko barbaachisaadha. Kanaafuu isinis link Bootii kana Namoota biroof akka ergitaniif isin gaafanna😍. 📎Liinkii @OromoTranslatorBot 📎\n🤖Bot Kana Kan hojjate: @Lencho24 ✍️\n✅Galatoomaa! Yeroo Gaarii🤩")
 
 channels = ["@oro_tech_tips", "@Oro_apps"]
 

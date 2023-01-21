@@ -103,8 +103,10 @@ def lang7(message):
 	return markup7
 
 keyboard = InlineKeyboardMarkup()
-t = InlineKeyboardButton(text ="📢JOIN CHANNEL📢", url="t.me/oro_tech_tips")
+t = InlineKeyboardButton(text ="☑️Subscribe To The Channel", url="https://t.me/oro_tech_tips")
+t1 = InlineKeyboardButton(text ="🔔Share The Bot", url="https://t.me/share/url?url=t.me/Oromotranslatorbot")
 keyboard.add(t)
+keyboard.add(t1)
 
 @bot.message_handler(commands=["start"], chat_types=["private"])
 def start(message):
@@ -129,9 +131,9 @@ def sats(message):
 
 @bot.message_handler(commands = ["about"])
 def maker(message):
-	bot.send_message(message.chat.id, "🛡Bootiin akka fayyadamtootaaf fayyadamuun salphatutti haala bareedaa ta\'en kan hojjatamedha. 👌Keessattuu bootiin kun Barattootaaf baay\'ee tokko barbaachisaadha. Kanaafuu isinis link Bootii kana Namoota biroof akka ergitaniif isin gaafanna😍. 📎Liinkii @OromoTranslatorBot 📎\n🤖Bot Kana Kan hojjate: @Lencho24\n✅Galatoomaa! Yeroo Gaarii🤩")
+	bot.send_message(message.chat.id, "🛡Bootiin akka fayyadamtootaaf fayyadamuun salphatutti haala bareedaa ta\'en kan hojjatamedha. 👌Keessattuu bootiin kun Barattootaaf baay\'ee tokko barbaachisaadha. Kanaafuu isinis link Bootii kana Namoota biroof akka ergitaniif isin gaafanna😍. 📎Liinkii @OromoTranslatorBot 📎\n🤖Bot Kana Kan hojjate: @Lencho24\n✅Galatoomaa! Yeroo Gaarii🤩", reply_markup = keyboard)
 
-channels = ["@oro_tech_tips", "@Oro_apps"]
+channels = ["@oro_tech_tips"]
 
 def check(message):
 	for i in channels:
@@ -163,10 +165,8 @@ def str1(message):
 	   else:
 	   	key = InlineKeyboardMarkup()
 	   	k1 = InlineKeyboardButton(text ="♻️Join Channel♻️", url="t.me/oro_tech_tips")
-	   	k2 = InlineKeyboardButton(text ="🔍Join Channel🔍️", url="t.me/oro_apps")
 	   	key.add(k1)
-	   	key.add(k2)
-	   	bot.send_message(message.chat.id, f"⚠️{message.chat.first_name} Bot Kana Fayyadamuun dura Chaanaalota keenya Join godhuu qabdu!", reply_markup = key)
+	   	bot.send_message(message.chat.id, f"⚠️{message.chat.first_name} Bot Kana Fayyadamuun dura Chaanaalota keenya Join godhuu qabdu!\n👌San booda fayyadamuu dandeessu😉", reply_markup = key)
     
 @bot.callback_query_handler(lambda callback:True)
 def callback(callback):

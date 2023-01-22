@@ -166,7 +166,7 @@ def str1(message):
 	   	key = InlineKeyboardMarkup()
 	   	k1 = InlineKeyboardButton(text ="♻️Join Channel♻️", url="t.me/oro_tech_tips")
 	   	key.add(k1)
-	   	bot.send_message(message.chat.id, f"⚠️{message.chat.first_name} Bot Kana Fayyadamuun dura Chaanaalota keenya Join godhuu qabdu!\n👌San booda fayyadamuu dandeessu😉", reply_markup = key)
+	   	bot.send_message(message.chat.id, f"⚠️{message.chat.first_name} Bot Kana Fayyadamuun dura Channel keenya Join godhuu qabdu!\n👌San booda fayyadamuu dandeessu", reply_markup = key)
     
 @bot.callback_query_handler(lambda callback:True)
 def callback(callback):

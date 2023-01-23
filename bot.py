@@ -169,30 +169,10 @@ def photo(message):
 		file_info = bot.get_file(fileID)
 		downloaded_file = bot.download_file(file_info.file_path)
 		if message.caption:
-			try:
-				bot.send_photo(a, downloaded_file, caption =message.caption)
-				success+=1
-			except:
-				pass
-				failed+=1
-			bot.send_message(message.chat.id, f"✅Successfully Broadcasted!\nSuccessful: {success}\nFailed: {failed}")
-		else:
-			try:
-				bot.send_photo(a, downloaded_file)
-				success+=1
-			except:
-				pass
-				failed+=1
-			bot.send_message(message.chat.id, f"✅Successfully Broadcasted!\nSuccessful: {success}\nFailed: {failed}")
-	if message.content_type =="text":
-		try:
-			bot.send_message(a, message.text)
+			bot.send_photo(a, downloaded_file, caption =message.caption)
 			success+=1
-		except:
-			pass
-			failed+=1
-		bot.send_message(message.chat.id, f"✅Successfully Broadcasted!\nSuccessful: {success}\nFailed: {failed}")
-
+			bot.send_message(message.chat.id, "✅Done: {success}")
+						
 @bot.message_handler(func = lambda message: True)
 def str1(message):
 	sub = check(message)

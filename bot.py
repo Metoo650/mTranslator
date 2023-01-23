@@ -164,34 +164,35 @@ def photo(message):
 	users = collection.find({})
 	for i in users:
 		a = i["user_id"]
-	if message.content_type =="photo":
-		fileID = message.photo[-1].file_id
-		file_info = bot.get_file(fileID)
-		downloaded_file = bot.download_file(file_info.file_path)
-		if message.caption:			
+	for a in message:
+		if message.content_type =="photo":
+			fileID = message.photo[-1].file_id
+			file_info = bot.get_file(fileID)
+			downloaded_file = bot.download_file(file_info.file_path)
+			if message.caption:
+				try:
+					bot.send_photo(a, downloaded_file, caption =message.caption)
+					success+=1
+				except:
+					continue 
+					failed+=1
+				bot.send_message(message.chat.id, f"✅Successfully Broadcasted!\nSuccessful: {success}\nFailed: {failed}")
+			else:
+				try:
+					bot.send_photo(a, downloaded_file)
+					success+=1
+				except:
+					continue 
+					failed+=1
+				bot.send_message(message.chat.id, f"✅Successfully Broadcasted!\nSuccessful: {success}\nFailed: {failed}")
+		if message.content_type =="text":
 			try:
-				bot.send_photo(a, downloaded_file, caption =message.caption)
+				bot.send_message(a, message.text)
 				success+=1
 			except:
 				continue 
 				failed+=1
 			bot.send_message(message.chat.id, f"✅Successfully Broadcasted!\nSuccessful: {success}\nFailed: {failed}")
-		else:			
-			try:
-				bot.send_photo(a, downloaded_file)
-				success+=1
-			except:
-				continue 
-				failed+=1
-			bot.send_message(message.chat.id, f"✅Successfully Broadcasted!\nSuccessful: {success}\nFailed: {failed}")
-	if message.content_type =="text":
-		try:
-			bot.send_message(a, message.text)
-			success+=1
-		except:
-			continue 
-			failed+=1
-		bot.send_message(message.chat.id, f"✅Successfully Broadcasted!\nSuccessful: {success}\nFailed: {failed}")
 
 @bot.message_handler(func = lambda message: True)
 def str1(message):

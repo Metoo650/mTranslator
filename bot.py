@@ -152,6 +152,44 @@ def feedback(message):
 		bot.send_message(message.chat.id, "Yaada keessaniif, Galatoomaa!")
 		bot.send_message(1365625365, f"📝Yaada Namootaa📝\n\n✏️User Id: {message.from_user.id}\n📑First Name: {message.from_user.first_name}\n🗞Username: @{message.from_user.username}\n🗒Yaada: {a}")
 
+@bot.message_handler(commands =["broadcast"])
+def new(message):
+	if message.chat.id == 1365625365:
+		bot.send_message(message.chat.id, "📥Send me a message to be sent to userd:)")
+		bot.register_next_step_handler(message, photo)
+
+def photo(message):
+	failed = 0
+	success = 0
+	users = collection.find({})
+	for i in users:
+		a = i["user_id"]
+	if message.content_type =="photo":
+		fileID = message.photo[-1].file_id
+		file_info = bot.get_file(fileID)
+		downloaded_file = bot.download_file(file_info.file_path)
+		if message.caption:			
+			try:
+				bot.send_photo(a, downloaded_file, caption =message.caption)
+				success+=1
+			except:
+				failed+=1
+			bot.send_message(message.chat.id, f"✅Successfully Broadcasted!\nSuccessful: {success}\nFailed: {failed}")
+		else:			
+			try:
+				bot.send_photo(a, downloaded_file)
+				success+=1
+			except:
+				failed+=1
+			bot.send_message(message.chat.id, f"✅Successfully Broadcasted!\nSuccessful: {success}\nFailed: {failed}")
+	if message.content_type =="text":
+		try:
+			bot.send_message(a, message.text)
+			success+=1
+		except:
+			failed+=1
+		bot.send_message(message.chat.id, f"✅Successfully Broadcasted!\nSuccessful: {success}\nFailed: {failed}")
+
 @bot.message_handler(func = lambda message: True)
 def str1(message):
 	sub = check(message)

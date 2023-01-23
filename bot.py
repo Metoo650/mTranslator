@@ -173,7 +173,7 @@ def photo(message):
 				bot.send_photo(a, downloaded_file, caption =message.caption)
 				success+=1
 			except:
-                                continue 
+				continue 
 				failed+=1
 			bot.send_message(message.chat.id, f"✅Successfully Broadcasted!\nSuccessful: {success}\nFailed: {failed}")
 		else:			
@@ -181,7 +181,7 @@ def photo(message):
 				bot.send_photo(a, downloaded_file)
 				success+=1
 			except:
-                                continue 
+				continue 
 				failed+=1
 			bot.send_message(message.chat.id, f"✅Successfully Broadcasted!\nSuccessful: {success}\nFailed: {failed}")
 	if message.content_type =="text":
@@ -189,7 +189,7 @@ def photo(message):
 			bot.send_message(a, message.text)
 			success+=1
 		except:
-                        continue 
+			continue 
 			failed+=1
 		bot.send_message(message.chat.id, f"✅Successfully Broadcasted!\nSuccessful: {success}\nFailed: {failed}")
 

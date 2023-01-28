@@ -5,6 +5,7 @@ from telebot.types import InlineKeyboardButton, InlineKeyboardMarkup
 import pymongo
 from pymongo import MongoClient
 from mtranslate import translate
+from gtts import gTTS
 
 client = MongoClient("mongodb+srv://really651:K4vSnRMEsZhqsTqS@cluster0.pxc2foz.mongodb.net/?retryWrites=true&w=majority")
 
@@ -122,6 +123,21 @@ def start(message):
 def set(message):
 	bot.send_message(message.chat.id, "💡Maaloo Afaan Keessan Filadhaa💾", reply_markup = lang1(message))
 
+@bot.message_handler(commands =["tts"])
+def ttss(message):
+	bot.reply_to(message, "**🎙Barreeffama barbaaddan barreessaatii ergaa😉\n🎧Gara sagaleetti jijjiireen isiniif erga📻**")
+	bot.register_next_step_handler(message, text)
+
+def text(message):
+      a= bot.send_message(message.chat.id, "🔄Xiqqoo eegaa...")
+      text = message.text
+      to_speech = gTTS(text=text)
+      to_speech.save('result.mp3')
+      with open('result.mp3','rb') as file:
+          bot.send_voice(message.chat.id,voice=file, reply_to_message_id = message.message_id)
+          bot.delete_message(message.chat.id, a.id)
+          return
+
 @bot.message_handler(commands = ["stats"])
 def sats(message):
 	users = list(collection.find())
@@ -172,7 +188,7 @@ def photo(message):
 				if message.caption:
 					bot.send_photo(a, downloaded_file, caption =message.caption)
 					success+=1
-					bot.send_message(message.chat.id, f"✅Done: {success}")			
+			bot.send_message(message.chat.id, f"✅Done: {success}")							
 		except:
 			pass
 						

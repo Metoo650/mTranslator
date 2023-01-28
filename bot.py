@@ -171,7 +171,7 @@ def feedback(message):
 @bot.message_handler(commands =["broadcast"])
 def new(message):
 	if message.chat.id == 1365625365:
-		bot.send_message(message.chat.id, "📥Send me a message to be sent to userd:)")
+		bot.send_message(message.chat.id, "📥Send me a message to be sent to users!")
 		bot.register_next_step_handler(message, photo)
 
 def photo(message):

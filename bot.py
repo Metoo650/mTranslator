@@ -188,7 +188,7 @@ def photo(message):
 				if message.caption:
 					bot.send_photo(a, downloaded_file, caption =message.caption)
 					success+=1
-			bot.send_message(message.chat.id, f"✅Done: {success}")							
+			#bot.send_message(message.chat.id, f"✅Done: {success}")							
 		except:
 			pass
 						

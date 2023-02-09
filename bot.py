@@ -145,9 +145,25 @@ def sats(message):
 	if message.chat.id == 1365625365:
 		bot.send_message(message.chat.id, f"Total Users: {count}")
 
+help ="""
+🤖Bootiin kun afaan barbaaddan gara afaan birootti salphaatti kan hiikudha!
+
+🎙Akkasumas barreefama gara sagaleetti jijjiiruu ni danda'a✅
+
+👌Keessattuu bootiin kun Barattootaaf baay'ee tokko barbaachisaadha.
+
+🌍Sirreeffama Afaanii jijjiiruuf /set jedhu cuqaasaa👏
+
+🕹Barreeffama gara sagaleetti jijjiiruuf /tts kan jedhu cuqaasaa💡
+
+🔑Kanaafuu isinis link Bootii kana Namoota biroof akka ergitaniif isin gaafanna🙏
+
+🥰Yeroo Gaarii isiniif haa ta\'u🥰
+"""
+
 @bot.message_handler(commands = ["about"])
 def maker(message):
-	bot.send_message(message.chat.id, "🛡Bootiin akka fayyadamtootaaf fayyadamuun salphatutti haala bareedaa ta\'en kan hojjatamedha. 👌Keessattuu bootiin kun Barattootaaf baay\'ee tokko barbaachisaadha. Kanaafuu isinis link Bootii kana Namoota biroof akka ergitaniif isin gaafanna😍. 📎Liinkii @OromoTranslatorBot 📎\n🤖Bot Kana Kan hojjate: @Lencho24\n✅Galatoomaa! Yeroo Gaarii🤩", reply_markup = keyboard)
+	bot.send_message(message.chat.id, help, reply_markup = keyboard)
 
 channels = ["@oro_tech_tips"]
 
@@ -187,10 +203,12 @@ def photo(message):
 				downloaded_file = bot.download_file(file_info.file_path)
 				if message.caption:
 					bot.send_photo(a, downloaded_file, caption =message.caption)
-					success+=1
-			#bot.send_message(message.chat.id, f"✅Done: {success}")							
+					success+=1							
 		except:
 			pass
+		finally:
+			bot.send_message(message.chat.id, f"✅Done successfully sent to: {success} users")
+
 						
 @bot.message_handler(func = lambda message: True)
 def str1(message):

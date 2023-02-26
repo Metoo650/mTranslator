@@ -105,8 +105,8 @@ def lang7(message):
 
 keyboard = InlineKeyboardMarkup()
 t = InlineKeyboardButton(text ="☑️Subscribe To The Channel", url="https://t.me/oro_tech_tips")
-t1 = InlineKeyboardButton(text ="🔄Inline Here", switch_inline_quey_current_chat="")
-t2 = InlineKeyboardButton(text ="🔂Inline Another Chat", switch_inline_quey="")
+t1 = InlineKeyboardButton(text ="🔄Inline Here", switch_inline_quey_current_chat="How are you?")
+t2 = InlineKeyboardButton(text ="🔂Inline Another Chat", switch_inline_query="How are you?")
 keyboard.add(t)
 keyboard.add(t1, t2)
 

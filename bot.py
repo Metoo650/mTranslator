@@ -133,7 +133,7 @@ def a(message):
 			r2 = InlineQueryResultArticle("2", "🇬🇧English",InputTextMessageContent(t), description = t,  thumb_url="https://t.me/Oro_tech_tips/336")
 			t = translate(message.query, "am")
 			r3 = InlineQueryResultArticle("3", "🇪🇹Amharic", InputTextMessageContent(t), description = t,  thumb_url="https://t.me/Oro_tech_tips/336")			
-			bot.answer_inline_query(message.id, [r, r2, r3])
+			bot.answer_inline_query(message.id, [r1, r2, r3])
 		except:
 			pass
 

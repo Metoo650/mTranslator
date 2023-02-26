@@ -122,7 +122,7 @@ def start(message):
 @bot.inline_handler(lambda query: True)
 def a(message):
 	if len(message.query) ==0:
-		r8 = InlineQueryResultArticle("99", "Barreeffama barressaa....", InputTextMessageContent("Barreeffama barbaaddan "inline mode" irratti barreessitanii gara afaan birootti jijjiiruu dandeessu▼"), description ="Maaloo barreeffama afaan barbaaddanii bareessaa...", thumb_url="https://t.me/Oro_tech_tips/336")
+		r8 = InlineQueryResultArticle("99", "Barreeffama barressaa....", InputTextMessageContent("Barreeffama barbaaddan inline mode irratti barreessitanii gara afaan birootti jijjiiruu dandeessu▼"), description ="Maaloo barreeffama afaan barbaaddanii bareessaa...", thumb_url="https://t.me/Oro_tech_tips/336")
 		bot.answer_inline_query(message.id, [r8])
 		return
 	else:

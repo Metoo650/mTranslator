@@ -105,9 +105,10 @@ def lang7(message):
 
 keyboard = InlineKeyboardMarkup()
 t = InlineKeyboardButton(text ="☑️Subscribe To The Channel", url="https://t.me/oro_tech_tips")
-t1 = InlineKeyboardButton(text ="🔔Share The Bot", url="https://t.me/share/url?url=t.me/Oromotranslatorbot")
+t1 = InlineKeyboardButton(text ="🔄Inline Here", switch_inline_quey_current_chat="How to use telegram bots")
+t2 = InlineKeyboardButton(text ="🔂Inline Another Chat", switch_inline_quey="How to use telegram bots")
 keyboard.add(t)
-keyboard.add(t1)
+keyboard.add(t1, t2)
 
 @bot.message_handler(commands=["start"], chat_types=["private"])
 def start(message):
@@ -122,7 +123,7 @@ def start(message):
 @bot.inline_handler(lambda query: True)
 def a(message):
 	if len(message.query) ==0:
-		r8 = InlineQueryResultArticle("99", "Barreeffama barressaa....", InputTextMessageContent("Barreeffama barbaaddan inline mode irratti barreessitanii gara afaan birootti jijjiiruu dandeessu▼"), description ="Maaloo barreeffama afaan barbaaddanii bareessaa...", thumb_url="https://t.me/Oro_tech_tips/336")
+		r8 = InlineQueryResultArticle("99", "Barreeffama barressaa....", InputTextMessageContent("Barreeffama barbaaddan inline mode irratti barreessitanii gara afaan birootti jijjiiruu dandeessu▼"), description ="Maaloo barreeffama afaan barbaaddanii barreessaa...", thumb_url="https://t.me/Oro_tech_tips/336")
 		bot.answer_inline_query(message.id, [r8])
 		return
 	else:

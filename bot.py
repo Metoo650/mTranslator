@@ -1,7 +1,7 @@
 import googletrans
 from googletrans import LANGCODES as lang, Translator
 import telebot 
-from telebot.types import InlineKeyboardButton, InlineKeyboardMarkup 
+from telebot.types import *
 import pymongo
 from pymongo import MongoClient
 from mtranslate import translate
@@ -119,6 +119,25 @@ def start(message):
 			collection.insert_one({"user_id": ids, "lang": "om"})
 			bot.send_message(message.chat.id, f"✋{message.from_user.first_name} Baga Nagaan Dhuftan. Ani Bootii Afaan barbaaddan gara Afaan feetaniitti isiniif jijjiiruudha. <b>Afaan Oromoo</b> dabalatee jechuudha.\nSirreefama Afaanii jijjiiruuf /set kan jedhu cuqaasaa! Amma barreeffama barbaaddan anatti ergaa🔍", parse_mode ="html", reply_markup = keyboard)
 
+@bot.inline_handler(lambda query: True)
+def a(message):
+	if len(message.query) ==0:
+		r8 = InlineQueryResultArticle("99", "Barreeffama barressaa....", InputTextMessageContent("Barreeffama barbaaddan "inline mode" irratti barreessitanii gara afaan birootti jijjiiruu dandeessu▼"), description ="Maaloo barreeffama afaan barbaaddanii bareessaa...", thumb_url="https://t.me/Oro_tech_tips/336")
+		bot.answer_inline_query(message.id, [r8])
+		return
+	else:
+		try:
+			t = translate(message.query, "om")
+			r1 = InlineQueryResultArticle("1", "🇪🇹Afaan Oromoo", InputTextMessageContent(t), description = t,  thumb_url="https://t.me/Oro_tech_tips/336")
+			t = translate(message.query, "en")
+			r2 = InlineQueryResultArticle("2", "🇬🇧English",InputTextMessageContent(t), description = t,  thumb_url="https://t.me/Oro_tech_tips/336")
+			t = translate(message.query, "am")
+			r3 = InlineQueryResultArticle("3", "🇪🇹Amharic", InputTextMessageContent(t), description = t,  thumb_url="https://t.me/Oro_tech_tips/336")			
+			bot.answer_inline_query(message.id, [r, r2, r3])
+		except:
+			pass
+
+
 @bot.message_handler(commands=["set"], chat_types=["private"])
 def set(message):
 	bot.send_message(message.chat.id, "💡Maaloo Afaan Keessan Filadhaa💾", reply_markup = lang1(message))
@@ -190,9 +209,10 @@ def new(message):
 		bot.send_message(message.chat.id, "📥Send me a message to be sent to users!")
 		bot.register_next_step_handler(message, photo)
 
+failed = 0
+success = 0
+
 def photo(message):
-	failed = 0
-	success = 0
 	users = collection.find({})
 	for i in users:
 		a = i["user_id"]
@@ -206,9 +226,10 @@ def photo(message):
 					success+=1							
 		except:
 			pass
-		finally:
-			bot.send_message(message.chat.id, f"✅Done successfully sent to: {success} users")
-
+	
+@bot.message_handler(commands =["sent"])
+def check_sent(message):
+	bot.send_message(message.chat.id, f"😄Sent to {success} users")
 						
 @bot.message_handler(func = lambda message: True)
 def str1(message):

@@ -9,7 +9,6 @@ from gtts import gTTS
 
 client = MongoClient("mongodb+srv://really651:K4vSnRMEsZhqsTqS@cluster0.pxc2foz.mongodb.net/?retryWrites=true&w=majority")
 
-# Select the database and collection
 db = client["Newdb"]
 collection = db["Mycollection"]
 
